@@ -20,13 +20,14 @@ namespace Friday13
 
         private void button1_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             DateTime friday = new DateTime(Convert.ToInt32(textBox1.Text), 1, 13);
-            List<string> list = new List<string>();
+            List<string> md = new List<string>();
             for (int i = 0; i < 12; i++)
             {
                 friday = friday.AddMonths(1);
-                string a = friday.ToString("f ffff");
-                Regex regex = new Regex(@"13 (/w*)");
+                string a = friday.ToString("d dddd");
+                Regex regex = new Regex(@"13 пят(/w*)");
 
                 MatchCollection matches = regex.Matches(a);
 
@@ -34,9 +35,13 @@ namespace Friday13
                 {
                     foreach(Match match in matches)
                     {
-                        list.Add(friday.ToString("d MMMM"));
+                        md.Add(friday.ToString("d MMMM"));
                     }
                 }
+            }
+            foreach (var sussy in md)
+            {
+                listBox1.Items.Add(sussy);
             }
         }
     }
