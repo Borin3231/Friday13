@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -21,6 +22,12 @@ namespace Friday13
         {
             DateTime friday = new DateTime(Convert.ToInt32(textBox1.Text), 1, 13);
             List<string> list = new List<string>();
+            for (int i = 0; i < 12; i++)
+            {
+                friday = friday.AddMonths(1);
+                string a = friday.ToString("f ffff");
+                Regex regex = new Regex(@"13 (/w*)");
+            }
         }
     }
 }
