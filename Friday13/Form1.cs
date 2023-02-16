@@ -27,6 +27,16 @@ namespace Friday13
                 friday = friday.AddMonths(1);
                 string a = friday.ToString("f ffff");
                 Regex regex = new Regex(@"13 (/w*)");
+
+                MatchCollection matches = regex.Matches(a);
+
+                if(matches.Count > 0)
+                {
+                    foreach(Match match in matches)
+                    {
+                        list.Add(friday.ToString("d MMMM"));
+                    }
+                }
             }
         }
     }
